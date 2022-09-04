@@ -20,6 +20,7 @@ const Header = () => (
 const App = () => {
     return (<div>
             <Header/>
+            <Header/>
             <input placeholder='search'/>
             <TodoList/>
         </div>
