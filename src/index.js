@@ -1,24 +1,28 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const TodoList = () => (<ul>
+const TodoList = () => (
+  <ul>
     <li>learn React</li>
     <li>apply for a job</li>
     <li>chill</li>
-</ul>);
+  </ul>
+);
 
-const Header = () => (<div>
+const Header = () => (
+  <div>
     <h1>First Project List</h1>
-</div>);
+  </div>
+);
 
-const App = () => (<div>
-    <Header/>
-    <input placeholder='search'/>
-    <TodoList/>
-</div>);
-
+const App = () => (
+  <div>
+    <Header />
+    <input placeholder='search' />
+    <TodoList />
+  </div>
+);
 
 const reactDom = document.getElementById('root');
 
-ReactDOM.render(<App/>, reactDom);
-
+ReactDOM.render(<App />, reactDom);
