@@ -1,5 +1,7 @@
 .searchBar-position{
     display: flex;
-
+}
+.m-2{
+    margin-left: 0!important;
 }
 

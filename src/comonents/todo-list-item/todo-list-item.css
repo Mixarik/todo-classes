@@ -1,8 +1,18 @@
-.todo-list-item{
+.todo-list-item {
     display: flex;
     justify-content: space-between;
 }
+
 .btn-outline-danger {
     padding: 4px 10px;
     margin-right: 3px;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.important {
+    font-size: 20px;
+    color: #2529ff;
 }

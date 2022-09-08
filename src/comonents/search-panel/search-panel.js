@@ -1,5 +1,6 @@
 import React from 'react';
-import FilterButtons from './item-status-filter';
+import FilterButtons from '../item-status-filter/item-status-filter';
+import './search-panel.css';
 
 const SearchPanel = () => {
   return (
