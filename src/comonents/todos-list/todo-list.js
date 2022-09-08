@@ -12,7 +12,6 @@ const TodoList = ({ todos }) => {
     );
   });
 
-
   return <ul className='list-group'>{elements}</ul>;
 };
 export default TodoList;
