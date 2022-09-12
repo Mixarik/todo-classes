@@ -8,13 +8,24 @@ import CreateItemList from '../create-list-panel/create-list-panel';
 import './app.css';
 
 export default class App extends React.Component {
+  maxId = 100;
+
   state = {
     todoData: [
-      { lable: 'Drink cofee', important: false, id: 1 },
-      { lable: 'Learn React', important: true, id: 2 },
-      { lable: 'Chill', important: false, id: 3 },
+      this.createNewItem('drink cofee'),
+      this.createNewItem('Learn React'),
+      this.createNewItem('Chill'),
     ],
   };
+
+  createNewItem(lable) {
+    return {
+      lable: lable,
+      important: false,
+      done: false,
+      id: this.maxId++,
+    };
+  }
 
   onDeleted = (id) => {
     this.setState(({ todoData }) => {
@@ -26,15 +37,45 @@ export default class App extends React.Component {
   };
 
   addItem = (text) => {
-    const newItem = {
-      lable: text,
-      important: false,
-      id: new Date().getTime(),
-    };
+    const newItem = this.createNewItem(text);
     this.setState(({ todoData }) => {
       const newArr = [...todoData, newItem];
       return {
-        todoData:newArr,
+        todoData: newArr,
+      };
+    });
+  };
+
+  ToggleImportant = (id) => {
+    this.setState(({ todoData }) => {
+      const idx = todoData.findIndex((el) => el.id === id);
+      const oldItem = todoData[idx];
+      const newItem = { ...oldItem, important: !oldItem.important };
+
+      const newArr = [
+        ...todoData.slice(0, idx),
+        newItem,
+        ...todoData.slice(idx + 1),
+      ];
+      return {
+        todoData: newArr,
+      };
+    });
+  };
+
+  ToggleDone = (id) => {
+    this.setState(({ todoData }) => {
+      const idx = todoData.findIndex((el) => el.id === id);
+      const oldItem = todoData[idx];
+      const newItem = { ...oldItem, done: !oldItem.done };
+
+      const newArr = [
+        ...todoData.slice(0, idx),
+        newItem,
+        ...todoData.slice(idx + 1),
+      ];
+      return {
+        todoData: newArr,
       };
     });
   };
@@ -45,10 +86,18 @@ export default class App extends React.Component {
         <div>
           <div className='header-counter'>
             <Header />
-            <CounterTodos />
+            <CounterTodos
+              done={this.state.todoData.filter((el) => el.done).length}
+              todo={this.state.todoData.filter((el) => !el.done).length}
+            />
           </div>
           <SearchPanel />
-          <TodoList todos={this.state.todoData} onDeletedA={this.onDeleted} />
+          <TodoList
+            ToggleDone={this.ToggleDone}
+            ToggleImportant={this.ToggleImportant}
+            todos={this.state.todoData}
+            onDeleted={this.onDeleted}
+          />
           <CreateItemList addItem={this.addItem} />
         </div>
       </div>
