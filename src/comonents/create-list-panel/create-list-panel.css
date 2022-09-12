@@ -1,0 +1,17 @@
+.col {
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+.create-item-list {
+  background-color: #8bd026;
+  opacity: 50%;
+  color: #0222ff;
+}
+.create-item-list:focus {
+  background-color: #8bd026;
+  color:#0222ff;
+}
+.create-list-btn{
+    margin-left: 10px;
+}

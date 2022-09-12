@@ -6,7 +6,7 @@ export default class FilterButtons extends React.Component {
     {
       return (
         <div className='btn-group'>
-          <button className='btn btn-info'>All</button>
+          <button className='btn btn btn-primary'>All</button>
           <button className='btn btn-outline-secondary'>Active</button>
           <button className='btn btn-outline-secondary'>Done</button>
         </div>
