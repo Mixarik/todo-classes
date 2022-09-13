@@ -4,7 +4,7 @@ import './search-panel.css';
 
 const SearchPanel = ({ ChangeSearchText }) => {
   const onChange = (e) => {
-      ChangeSearchText(e.target.value.toLowerCase());
+    ChangeSearchText(e.target.value.toLowerCase());
   };
 
   return (
