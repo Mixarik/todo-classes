@@ -16,6 +16,7 @@ export default class App extends React.Component {
       this.createNewItem('Learn React'),
       this.createNewItem('Chill'),
     ],
+    text: '',
   };
 
   createNewItem(lable) {
@@ -70,7 +71,22 @@ export default class App extends React.Component {
     });
   };
 
+  SearchItem = (arr, text) => {
+    if (text === '') {
+      return arr;
+    }
+    return arr.filter((el) => {
+      return el.lable.toLowerCase().indexOf(text) > -1;
+    });
+  };
+
+  ChangeSearchText = (input) => {
+    this.setState({ text: input });
+  };
+
   render() {
+    const { todoData, text } = this.state;
+    const visibilityItem = this.SearchItem(todoData, text);
     return (
       <div className='main-position'>
         <div>
@@ -81,11 +97,11 @@ export default class App extends React.Component {
               todo={this.state.todoData.filter((el) => !el.done).length}
             />
           </div>
-          <SearchPanel />
+          <SearchPanel ChangeSearchText={this.ChangeSearchText} />
           <TodoList
             ToggleDone={this.ToggleDone}
             ToggleImportant={this.ToggleImportant}
-            todos={this.state.todoData}
+            todos={visibilityItem}
             onDeleted={this.onDeleted}
           />
           <CreateItemList addItem={this.addItem} />
