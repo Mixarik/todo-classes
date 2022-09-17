@@ -1,15 +1,16 @@
 .btn-group {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .btn-group button {
-
-    height: 38px;
+  height: 38px;
 }
-
-
-
-
-
-
+.btn-group-elem:hover {
+  background-color: #4955ff;
+  color: white;
+}
+.btn-group-elem {
+  background-color: #4955ff;
+  color: white;
+}

@@ -2,15 +2,28 @@ import React from 'react';
 import './item-status-filter.css';
 
 export default class FilterButtons extends React.Component {
+  buttons = [
+    { name: 'all', label: 'All' },
+    { name: 'active', label: 'Active' },
+    { name: 'done', label: 'Done' },
+  ];
+
   render() {
-    {
+    const { ChangeStateFilterButtons, filter } = this.props;
+
+    const buttons = this.buttons.map(({ name, label }) => {
+      const active = filter === name;
+      const clazz = active ? 'btn-info btn-group-elem' : 'btn-outline-secondary';
       return (
-        <div className='btn-group'>
-          <button className='btn btn btn-primary'>All</button>
-          <button className='btn btn-outline-secondary'>Active</button>
-          <button className='btn btn-outline-secondary'>Done</button>
-        </div>
+        <button
+          className={`btn ${clazz}`}
+          onClick={() => ChangeStateFilterButtons('all')}
+          key={name}
+        >
+          {label}
+        </button>
       );
-    }
+    });
+    return <div className='btn-group'>{buttons}</div>;
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import FilterButtons from '../item-status-filter/item-status-filter';
 import './search-panel.css';
 
-const SearchPanel = ({ ChangeSearchText }) => {
+const SearchPanel = ({filter,ChangeStateFilterButtons, ChangeSearchText }) => {
   const onChange = (e) => {
     ChangeSearchText(e.target.value.toLowerCase());
   };
@@ -14,7 +14,7 @@ const SearchPanel = ({ ChangeSearchText }) => {
         className='form-control m-2'
         onChange={onChange}
       />
-      <FilterButtons />
+      <FilterButtons filter={filter} ChangeStateFilterButtons={ChangeStateFilterButtons} />
     </form>
   );
 };

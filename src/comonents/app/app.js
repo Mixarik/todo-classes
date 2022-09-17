@@ -17,6 +17,7 @@ export default class App extends React.Component {
       this.createNewItem('Chill'),
     ],
     text: '',
+    filter: 'all',
   };
 
   createNewItem(lable) {
@@ -84,9 +85,28 @@ export default class App extends React.Component {
     this.setState({ text: input });
   };
 
+  FilterButtons = (arr, filter) => {
+    return arr.filter((el) => {
+      if (filter === 'all') {
+        return el;
+      } else if (filter === 'active') {
+        return !el.done;
+      } else if (filter === 'done') {
+        return el.done;
+      } else return arr;
+    });
+  };
+
+  ChangeStateFilterButtons = (property) => {
+    this.setState({ filter: property });
+  };
+
   render() {
-    const { todoData, text } = this.state;
-    const visibilityItem = this.SearchItem(todoData, text);
+    const { todoData, text, filter } = this.state;
+    const visibilityItem = this.FilterButtons(
+      this.SearchItem(todoData, text),
+      filter
+    );
     return (
       <div className='main-position'>
         <div>
@@ -97,7 +117,11 @@ export default class App extends React.Component {
               todo={this.state.todoData.filter((el) => !el.done).length}
             />
           </div>
-          <SearchPanel ChangeSearchText={this.ChangeSearchText} />
+          <SearchPanel
+            ChangeStateFilterButtons={this.ChangeStateFilterButtons}
+            ChangeSearchText={this.ChangeSearchText}
+            filter={filter}
+          />
           <TodoList
             ToggleDone={this.ToggleDone}
             ToggleImportant={this.ToggleImportant}
