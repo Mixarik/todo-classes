@@ -3,21 +3,21 @@ import './create-list-panel.css';
 
 export default class CreateItemList extends React.Component {
   state = {
-    lable: '',
+    label: '',
   };
   ChangeStateForm = (e) => {
     this.setState(() => {
       return {
-        lable: e.target.value,
+        label: e.target.value,
       };
     });
   };
   OnSubmit = (e) => {
     e.preventDefault();
-    this.props.addItem(this.state.lable);
+    this.props.addItem(this.state.label);
     this.setState(() => {
       return {
-        lable: '',
+        label: '',
       };
     });
   };
@@ -34,7 +34,7 @@ export default class CreateItemList extends React.Component {
           className='form-control create-item-list'
           placeholder='List name'
           aria-label='First name'
-          value={this.state.lable}
+          value={this.state.label}
         />
         <div className='d-grid gap-2 d-md-block'>
           <button

@@ -10,7 +10,7 @@ const TodoList = ({ todos, onDeleted, ToggleDone, ToggleImportant }) => {
         ToggleDone={() => ToggleDone(id)}
         ToggleImportant={() => ToggleImportant(id)}
         key={id}
-        lable={item.lable}
+        label={item.label}
         done={item.done}
         important={item.important}
         onDeleted={() => onDeleted(id)}

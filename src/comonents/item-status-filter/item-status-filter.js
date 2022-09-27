@@ -10,14 +10,18 @@ export default class FilterButtons extends React.Component {
 
   render() {
     const { ChangeStateFilterButtons, filter } = this.props;
-
     const buttons = this.buttons.map(({ name, label }) => {
       const active = filter === name;
-      const clazz = active ? 'btn-info btn-group-elem' : 'btn-outline-secondary';
+      const clazz = active
+        ? 'btn-info btn-group-elem'
+        : 'btn-outline-secondary';
       return (
         <button
           className={`btn ${clazz}`}
-          onClick={() => ChangeStateFilterButtons('all')}
+          onClick={(e) => {
+            e.preventDefault();
+            ChangeStateFilterButtons(name);
+          }}
           key={name}
         >
           {label}

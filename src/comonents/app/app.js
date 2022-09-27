@@ -20,9 +20,9 @@ export default class App extends React.Component {
     filter: 'all',
   };
 
-  createNewItem(lable) {
+  createNewItem(label) {
     return {
-      lable: lable,
+      label: label,
       important: false,
       done: false,
       id: this.maxId++,
@@ -72,14 +72,10 @@ export default class App extends React.Component {
     });
   };
 
-  SearchItem = (arr, text) => {
-    if (text === '') {
-      return arr;
-    }
-    return arr.filter((el) => {
-      return el.lable.toLowerCase().indexOf(text) > -1;
-    });
-  };
+  SearchItem = (arr, text) =>
+    text.trim()
+      ? arr.filter((el) => el.label.toLowerCase().includes(text))
+      : arr;
 
   ChangeSearchText = (input) => {
     this.setState({ text: input });

@@ -3,7 +3,7 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends React.Component {
   render() {
-    const { lable, onDeleted, ToggleDone, ToggleImportant, done, important } =
+    const { label, onDeleted, ToggleDone, ToggleImportant, done, important } =
       this.props;
 
     let classNames = 'todo-list-item';
@@ -18,7 +18,7 @@ export default class TodoListItem extends React.Component {
       <li className='list-group-item'>
         <span className={classNames}>
           <span className={classNames} onClick={ToggleDone}>
-            {lable}
+            {label}
           </span>
           <span>
             <button className='btn btn-outline-danger' onClick={onDeleted}>

@@ -18,7 +18,7 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "prettier/prettier": 1,
+    "prettier/prettier": "warn",
     "react/prop-types": 0
   }
 }
